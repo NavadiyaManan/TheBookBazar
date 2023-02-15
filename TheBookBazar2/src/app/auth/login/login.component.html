@@ -1,0 +1,50 @@
+<div  class="content" role="main">
+                    <form [formGroup]="loginform">
+                        <div>
+                            <mat-card-title class="Login-title"
+                              >Login</mat-card-title
+                            >
+                          </div><br>
+                       
+                          <mat-form-field appearance="outline">
+                            <mat-label>Email</mat-label>
+                            <input  type="email"
+                              formControlName="email"
+                              placeholder="Password"  [(ngModel)]="email"
+                              matInput 
+                              placeholder="Email"
+                              [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+                            />
+                          </mat-form-field>
+                          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                            <div *ngIf="f['email'].errors['required']">Email is required</div>
+                            <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+                          </div>
+                          <br />
+                          <mat-form-field appearance="outline">
+                            <mat-label>Password</mat-label>
+                            <input
+                              matInput
+                              formControlName="password"
+                              type="password" [(ngModel)]="password"
+                              [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+                            />
+                          </mat-form-field>
+                          <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                            <div *ngIf="f['password'].errors['required']">Please Enter Password</div>
+                          </div>
+                        
+                      
+                          <div class="example-button-row">
+                            <button mat-raised-button color="primary" (click)="login()">Submit</button>
+                          </div>
+                    
+                                <a routerLink="/register" style="text-decoration: none;">Need Account ? <span class="text-danger">Register</span></a>
+                           
+                            <div>
+                                <a href="/forgot-password" class="text-dark" style="text-decoration: none;"> Forgot Password ? </a>
+                            </div>
+                       
+                        
+                    </form>
+</div>

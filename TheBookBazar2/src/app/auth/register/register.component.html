@@ -1,0 +1,64 @@
+<div class="content" role="main">
+<form
+  class="example-form"
+  [formGroup]="registerform"
+  (ngSubmit)="register()"
+>
+  <div>
+    <mat-card-title class="Registeration-title"
+      >Registration From</mat-card-title
+    >
+  </div>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input
+      matInput
+      formControlName="name"
+      placeholder="Full Name"
+      [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+    />
+  </mat-form-field>
+  <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+    <div *ngIf="f['name'].errors['required']">Please Enter Your Name</div>
+  </div>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input  type="email"
+      formControlName="email"
+      placeholder="Password"  [(ngModel)]="email"
+      matInput 
+      placeholder="Email"
+      [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+    />
+  </mat-form-field>
+  <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+    <div *ngIf="f['email'].errors['required']">Email is required</div>
+    <div *ngIf="f['email'].errors['email']">Email is invalid</div>
+  </div>
+  <br />
+  <mat-form-field appearance="outline">
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      formControlName="password"
+      type="password" [(ngModel)]="password"
+      [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+    />
+  </mat-form-field>
+  <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+    <div *ngIf="f['password'].errors['required']">Please Enter Password</div>
+  </div>
+  <div>
+    <mat-checkbox class="example-margin"
+      >Accept&nbsp;<a>Terms & Conditions!</a></mat-checkbox
+    >
+  </div>
+  <div class="example-button-row">
+    <button type="submit" mat-raised-button color="primary">Register</button>
+    
+    <button routerLink="/login" mat-raised-button color="accent">Login</button>
+  </div>
+</form>
+</div>
